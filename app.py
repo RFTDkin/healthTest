@@ -63,5 +63,10 @@ def attention_needed():
 def top():
     return render_template('top.html')
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('home'))
+
 if __name__ == '__main__':
     app.run(debug=True)
