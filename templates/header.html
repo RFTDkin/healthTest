@@ -8,14 +8,18 @@
         function toggleDropdown() {
             document.getElementById('dropdown-menu').classList.toggle('hidden');
         }
+
+        function showYogaVideo() {
+            document.getElementById('yoga-video').classList.remove('hidden');
+        }
     </script>
 </head>
 <body>
-    <header class="bg-gray-800 p-4 flex justify-between items-center">
+    <header class="bg-gray-800 p-6 flex justify-between items-center">
         <div class="text-white text-lg">ヘルステスト</div>
         <nav class="flex space-x-4">
             <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">食事療法</a>
-            <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">3分ヨガ</a>
+            <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded" onclick="showYogaVideo()">3分ヨガ</a>
             <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">ボタン3</a>
             <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">ボタン4</a>
             <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">ボタン5</a>
@@ -26,7 +30,7 @@
             </button>
             <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden">
                 <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">アカウント管理</a>
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">ログアウト</a>
+                <a href="/logout" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">ログアウト</a>
             </div>
         </div>
     </header>
