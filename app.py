@@ -28,6 +28,19 @@ def login():
     else:
         return redirect(url_for('home'))
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username not in users:
+            users[username] = {"password": password, "first_login": True}
+            session['username'] = username
+            return redirect(url_for('health_questions'))
+        else:
+            return "ユーザー名は既に存在します"
+    return render_template('register.html')
+
 @app.route('/health_questions', methods=['GET', 'POST'])
 def health_questions():
     if request.method == 'POST':
