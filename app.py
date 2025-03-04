@@ -36,12 +36,26 @@ def health_questions():
         users[session['username']]['first_login'] = False
         if score >= 80:
             group = "健康"
+            return redirect(url_for('healthy'))
         elif 60 <= score < 80:
             group = "体調問題ない"
+            return redirect(url_for('no_problem'))
         else:
             group = "注意が必要"
-        return render_template('result.html', group=group)
+            return redirect(url_for('attention_needed'))
     return render_template('health_questions.html')
+
+@app.route('/healthy')
+def healthy():
+    return render_template('result.html', group="健康")
+
+@app.route('/no_problem')
+def no_problem():
+    return render_template('result2.html', group="体調問題ない")
+
+@app.route('/attention_needed')
+def attention_needed():
+    return render_template('result3.html', group="注意が必要")
 
 @app.route('/top')
 def top():
