@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>健康質問</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">健康に関する質問</h2>
+        <form method="post" action="/health_questions">
+            <div class="mb-4">
+                <label class="block text-gray-700">1. 最近よく眠れていますか？</label>
+                <select name="q1" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="20">はい</option>
+                    <option value="10">まあまあ</option>
+                    <option value="0">いいえ</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">2. 食欲はありますか？</label>
+                <select name="q2" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="20">はい</option>
+                    <option value="10">まあまあ</option>
+                    <option value="0">いいえ</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">3. 最近運動していますか？</label>
+                <select name="q3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="20">はい</option>
+                    <option value="10">まあまあ</option>
+                    <option value="0">いいえ</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">4. ストレスを感じていますか？</label>
+                <select name="q4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="0">はい</option>
+                    <option value="10">まあまあ</option>
+                    <option value="20">いいえ</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">5. 最近体調に変化はありますか？</label>
+                <select name="q5" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="0">はい</option>
+                    <option value="10">まあまあ</option>
+                    <option value="20">いいえ</option>
+                </select>
+            </div>
+            <div class="flex items-center justify-between">
+                <input type="submit" value="送信" class="w-full bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
