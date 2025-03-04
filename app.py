@@ -6,7 +6,9 @@ app.secret_key = 'your_secret_key'
 # ユーザー情報の仮データ
 users = {
     "user1": {"password": "password1", "first_login": True},
-    "user2": {"password": "password2", "first_login": True}
+    "user2": {"password": "password2", "first_login": True},
+    "123": {"password": "123", "first_login": True},
+    "456": {"password": "456", "first_login": True}
 }
 
 @app.route('/')
