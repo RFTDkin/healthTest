@@ -76,6 +76,10 @@ def attention_needed():
 def top():
     return render_template('top.html')
 
+@app.route('/yoga')
+def yoga():
+    return render_template('yoga.html')
+
 @app.route('/logout')
 def logout():
     session.clear()

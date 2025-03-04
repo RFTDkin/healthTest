@@ -7,34 +7,5 @@
 </head>
 <body class="p-4">
     {% include 'header.html' %}
-    <div class="container mx-auto mt-8 text-center">
-        <div id="yoga-video" class="hidden mt-8 flex justify-center items-center relative h-96">
-            <button onclick="prevVideo()" class="absolute left-0 text-5xl text-gray-700 hover:text-gray-900">&larr;</button>
-            <iframe id="video-frame" width="560" height="315" src="https://www.youtube.com/embed/XmtuK8W-7t0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <button onclick="nextVideo()" class="absolute right-0 text-5xl text-gray-700 hover:text-gray-900">&rarr;</button>
-        </div>
-    </div>
-    <script>
-        const videos = [
-            "https://www.youtube.com/embed/XmtuK8W-7t0",
-            "https://www.youtube.com/embed/9oW6D9ez8rA",
-            "https://www.youtube.com/embed/2iQq5jFMvdI"
-        ];
-        let currentVideoIndex = 0;
-
-        function showYogaVideo() {
-            document.getElementById('yoga-video').classList.remove('hidden');
-        }
-
-        function prevVideo() {
-            currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
-            document.getElementById('video-frame').src = videos[currentVideoIndex];
-        }
-
-        function nextVideo() {
-            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-            document.getElementById('video-frame').src = videos[currentVideoIndex];
-        }
-    </script>
 </body>
 </html>
