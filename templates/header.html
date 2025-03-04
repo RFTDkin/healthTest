@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>共通ヘッダー</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function toggleDropdown() {
+            document.getElementById('dropdown-menu').classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body>
+    <header class="bg-gray-800 p-4 flex justify-between items-center">
+        <div class="text-white text-lg">ヘルステスト</div>
+        <nav class="flex space-x-4">
+            <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">食事療法</a>
+            <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">3分ヨガ</a>
+            <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">ボタン3</a>
+            <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">ボタン4</a>
+            <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">ボタン5</a>
+        </nav>
+        <div class="relative">
+            <button class="text-white focus:outline-none" onclick="toggleDropdown()">
+                <img src="https://via.placeholder.com/40" alt="アカウント管理" class="rounded-full">
+            </button>
+            <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden">
+                <div class="block px-4 py-2 text-gray-700">健康診断結果: {{ group }}</div>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">アカウント管理</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">ログアウト</a>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
