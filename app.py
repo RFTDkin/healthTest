@@ -28,6 +28,19 @@ def login():
     else:
         return redirect(url_for('home'))
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username not in users:
+            users[username] = {"password": password, "first_login": True}
+            session['username'] = username
+            return redirect(url_for('health_questions'))
+        else:
+            return "ユーザー名は既に存在します"
+    return render_template('register.html')
+
 @app.route('/health_questions', methods=['GET', 'POST'])
 def health_questions():
     if request.method == 'POST':
@@ -36,10 +49,10 @@ def health_questions():
         for key, value in answers.items():
             score += int(value)
         users[session['username']]['first_login'] = False
-        if score >= 80:
+        if score >= 11:
             group = "健康"
             return redirect(url_for('healthy'))
-        elif 60 <= score < 80:
+        elif 7 <= score < 11:
             group = "体調問題ない"
             return redirect(url_for('no_problem'))
         else:
