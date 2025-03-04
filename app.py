@@ -59,7 +59,7 @@ def attention_needed():
 
 @app.route('/top')
 def top():
-    return "トップページへようこそ！"
+    return render_template('top.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
