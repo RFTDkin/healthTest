@@ -36,10 +36,10 @@ def health_questions():
         for key, value in answers.items():
             score += int(value)
         users[session['username']]['first_login'] = False
-        if score >= 80:
+        if score >= 11:
             group = "健康"
             return redirect(url_for('healthy'))
-        elif 60 <= score < 80:
+        elif 7 <= score < 11:
             group = "体調問題ない"
             return redirect(url_for('no_problem'))
         else:
