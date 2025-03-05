@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import datetime
 from werkzeug.utils import secure_filename
 import os
+import random
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -96,7 +97,16 @@ def health_questions():
 
 @app.route('/healthy')
 def healthy():
-    return render_template('result.html', group="健康")
+    messages = [
+        "今日も元気に過ごしましょう！",
+        "健康第一！",
+        "バランスの取れた食事を心がけましょう。",
+        "運動を続けて、健康を維持しましょう。",
+        "リラックスする時間を大切に。",
+        "水分補給を忘れずに！"
+    ]
+    random_message = random.choice(messages)
+    return render_template('result.html', group="健康", random_message=random_message)
 
 @app.route('/no_problem')
 def no_problem():
