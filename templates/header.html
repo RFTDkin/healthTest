@@ -15,22 +15,22 @@
     </script>
 </head>
 <body>
-    <header class="bg-gray-800 p-6 flex justify-between items-center">
-        <div class="text-white text-lg">ヘルステスト</div>
+    <header class="bg-gradient-to-r from-green-600 to-emerald-700 p-6 flex justify-between items-center shadow-lg">
+        <div class="text-white text-lg font-semibold">HealthTest</div>
         <nav class="flex space-x-4">
-            <a href="/top" class="text-white hover:bg-gray-700 px-3 py-2 rounded">ホームページ</a>
-            <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">食事療法</a>
-            <a href="/yoga" class="text-white hover:bg-gray-700 px-3 py-2 rounded">3分ヨガ</a>
-            <a href="/user_specific_advice" class="text-white hover:bg-gray-700 px-3 py-2 rounded">適した回答</a>
-            <a href="#" class="text-white hover:bg-gray-700 px-3 py-2 rounded">ボタン4</a>
+            <a href="/top" class="text-white hover:bg-green-500/50 px-3 py-2 rounded-lg transition duration-300">ホームページ</a>
+            <a href="#" class="text-white hover:bg-green-500/50 px-3 py-2 rounded-lg transition duration-300">食事療法</a>
+            <a href="/yoga" class="text-white hover:bg-green-500/50 px-3 py-2 rounded-lg transition duration-300">3分ヨガ</a>
+            <a href="#" class="text-white hover:bg-green-500/50 px-3 py-2 rounded-lg transition duration-300">ボタン4</a>
+            <a href="#" class="text-white hover:bg-green-500/50 px-3 py-2 rounded-lg transition duration-300">ボタン5</a>
         </nav>
         <div class="relative">
-            <button class="text-white focus:outline-none" onclick="toggleDropdown()">
-                <img src="https://via.placeholder.com/40" alt="アカウント管理" class="rounded-full">
+            <button class="text-white focus:outline-none transform hover:scale-105 transition-transform duration-300" onclick="toggleDropdown()">
+                <img src="https://via.placeholder.com/40" alt="アカウント管理" class="rounded-full border-2 border-white/50">
             </button>
-            <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden">
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">アカウント管理</a>
-                <a href="/logout" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">ログアウト</a>
+            <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-1 hidden transform transition-all duration-300">
+                <a href="#" class="block px-4 py-2 text-emerald-700 hover:bg-emerald-50">アカウント管理</a>
+                <a href="/logout" class="block px-4 py-2 text-emerald-700 hover:bg-emerald-50">ログアウト</a>
             </div>
         </div>
     </header>
