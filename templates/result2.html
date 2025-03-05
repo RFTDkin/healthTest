@@ -5,14 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>体調が普通だった人のページ</title>
     <style>
-        header, footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-        }
+
         body {
-            background-image: url('https://image.freepik.com/free-vector/gradient-background-in-green-shades_23-2148363157.jpg');
             background-color: rgba(255, 255, 255, 0.5); /* 透明度を設定 */
             background-blend-mode: lighten; /* 背景画像と背景色をブレンド */
             font-family: Arial, sans-serif;
@@ -51,7 +45,6 @@
             margin-right: 0;
         }
         nav a {
-            background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -60,23 +53,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>健康管理アプリ</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/top">トップページへ</a>
-                </li>
-                <li>
-                    <a href="/register">新規登録</a>
-                </li>
-                <li>
-                    <a href="/logout">ログアウト</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
+    {% include 'header.html' %}
     <div class="container">
         <h1>体調が普通です</h1>
         <p>今日は特別な不調は感じませんが、健康を保つために少し気をつけることが大切です。</p>
