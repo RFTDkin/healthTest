@@ -100,7 +100,28 @@ def user_specific_advice():
 
 @app.route('/top')
 def top():
-    return render_template('top.html')
+    username = session.get('username')
+    if not username:
+        return redirect(url_for('home'))
+
+    # 仮のデータとして、スコアが0だった質問に対するアドバイスを生成
+    advice_list = []
+    if users[username].get('q1') == 0:
+        advice_list.append("最近よく眠れていないようです。規則正しい生活を心がけ、リラックスする時間を持ちましょう。")
+    if users[username].get('q2') == 0:
+        advice_list.append("食欲がないようです。バランスの取れた食事を心がけ、無理せず少しずつ食べるようにしましょう。")
+    if users[username].get('q3') == 0:
+        advice_list.append("バランスの取れた食事ができていないようです。栄養バランスを考えた食事を心がけましょう。")
+    if users[username].get('q4') == 0:
+        advice_list.append("最近運動していないようです。無理のない範囲で軽い運動を取り入れましょう。")
+    if users[username].get('q5') == 0:
+        advice_list.append("ストレスを感じているようです。リラックスする時間を持ち、ストレス解消法を見つけましょう。")
+    if users[username].get('q6') == 0:
+        advice_list.append("最近体調に変化があるようです。無理せず体を休め、必要なら医師の診察を受けましょう。")
+    if users[username].get('q7') == 0:
+        advice_list.append("社会的な交流が少ないようです。友人や家族との時間を大切にし、コミュニケーションを取りましょう。")
+
+    return render_template('top.html', advice_list=advice_list)
 
 @app.route('/yoga')
 def yoga():
