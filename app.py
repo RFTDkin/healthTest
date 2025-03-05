@@ -239,6 +239,27 @@ def analyze_food():
         
         return render_template('food_analysis.html', analysis_result=analysis_result)
 
+@app.route('/account')
+def account():
+    username = session.get('username')
+    if not username:
+        return redirect(url_for('home'))
+    
+    user_info = users.get(username, {})
+    return render_template('account.html', user_info=user_info)
+
+@app.route('/update_account', methods=['POST'])
+def update_account():
+    username = session.get('username')
+    if not username:
+        return redirect(url_for('home'))
+    
+    new_password = request.form.get('password')
+    if new_password:
+        users[username]['password'] = new_password
+    
+    return redirect(url_for('account'))
+
 @app.route('/logout')
 def logout():
     session.clear()
