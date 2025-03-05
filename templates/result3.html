@@ -24,16 +24,6 @@
             background-color: #f9f9f9;
             flex: 1;
         }
-        h1 {
-            color: #333;
-        }
-        .advice {
-            margin-top: 20px;
-        }
-        .advice ul {
-            list-style-type: none; /* 点を取り除く */
-            padding: 0;
-        }
         nav ul {
             display: flex;
             justify-content: center;
@@ -58,11 +48,11 @@
 </head>
 <body>
     {% include 'header.html' %}
-    <div class="container">
-        <h1>注意が必要なようです</h1>
-        <p>今日は体調が思わしくなく、少し調子が悪いようです。無理せず、まずは体を休めることが大切です。</p>
+    <div class="container bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">注意が必要なようです</h1>
+        <p class="text-lg text-gray-700 mb-6">今日は体調が思わしくなく、少し調子が悪いようです。無理せず、まずは体を休めることが大切です。</p>
         <div class="advice">
-            <h2>体調がよくなるアドバイス</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">体調がよくなるアドバイス</h2>
             <ul>
                 <li>規則正しい生活を心掛けましょう</li>
                 <li>毎日３分でも運動習慣をつけるようにしましょう</li>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>体調が良い人のページ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -24,16 +25,6 @@
             background-color: #f9f9f9;
             flex: 1;
         }
-        h1 {
-            color: #333;
-        }
-        .advice {
-            margin-top: 20px;
-        }
-        .advice ul {
-            list-style-type: none; /* 点を取り除く */
-            padding: 0;
-        }
         nav ul {
             display: flex;
             justify-content: center;
@@ -53,24 +44,18 @@
             text-decoration: none;
             border-radius: 5px;
         }
-
     </style>
 </head>
 <body>
     {% include 'header.html' %}
-    <div class="container">
-        <h1>体調は健康です</h1>
-        <p>今日は体調が素晴らしく、元気いっぱいです！この状態を維持するためには、さらに気をつけることと継続することが重要です。</p>
+    <div class="container bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">体調は健康です</h1>
+        <p class="text-lg text-gray-700 mb-6">今日は体調が素晴らしく、元気いっぱいです！この状態を維持するためには、さらに気をつけることと継続することが重要です。</p>
         <div class="advice">
-            <h2>体調がさらによくなるアドバイス</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">体調がさらによくなるアドバイス</h2>
             <ul>
                 <li>引き続きバランスの取れた食事を心がけましょう。</li>
                 <li>定期的に運動を続けましょう。</li>
-                <li>水分をしっかり摂りましょう。</li>
-                <li>十分な睡眠を確保しましょう。</li>
-                <li>趣味やリラックスできる時間を持ちましょう。</li>
-                <li>社交的な活動を大切にしましょう。</li>
-                <li>前向きな気持ちを維持しましょう。</li>
             </ul>
         </div>
         <div class="mt-6">

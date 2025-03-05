@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>体調が普通だった人のページ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -23,16 +24,6 @@
             border-radius: 10px;
             background-color: #f9f9f9;
             flex: 1;
-        }
-        h1 {
-            color: #333;
-        }
-        .advice {
-            margin-top: 20px;
-        }
-        .advice ul {
-            list-style-type: none; /* 点を取り除く */
-            padding: 0;
         }
         nav ul {
             display: flex;
@@ -57,11 +48,11 @@
 </head>
 <body>
     {% include 'header.html' %}
-    <div class="container">
-        <h1>体調が普通です</h1>
-        <p>今日は特別な不調は感じませんが、健康を保つために少し気をつけることが大切です。</p>
+    <div class="container bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">体調が普通です</h1>
+        <p class="text-lg text-gray-700 mb-6">今日は特別な不調は感じませんが、健康を保つために少し気をつけることが大切です。</p>
         <div class="advice">
-            <h2>体調がよくなるアドバイス</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">体調がよくなるアドバイス</h2>
             <ul>
                 <li>規則正しい生活を心がけましょう。</li>
                 <li>軽い運動を習慣にしましょう。</li>
