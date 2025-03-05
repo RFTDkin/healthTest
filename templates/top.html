@@ -9,7 +9,7 @@
     {% include 'header.html' %}
     <div class="container mx-auto mt-8 text-center">
         <h2 class="text-2xl font-bold mb-6">ユーザーごとのアドバイス</h2>
-        <div class="text-gray-700">
+        <div class="text-gray-700 border border-gray-300 p-4 rounded-lg shadow-md">
             {% if advice_list %}
                 <ul>
                     {% for advice in advice_list %}
@@ -19,6 +19,20 @@
             {% else %}
                 <p>特にアドバイスはありません。</p>
             {% endif %}
+        </div>
+        <div class="mt-8 space-y-8">
+            <div class="flex items-center space-x-4 border border-gray-300 p-4 rounded-lg shadow-md">
+                <img src="https://via.placeholder.com/150" alt="医療" class="w-32 h-32 object-cover rounded-lg shadow-md">
+                <p class="text-left text-gray-700">説明: これは説明1の内容です。ここに写真に関する詳細な説明を書きます。</p>
+            </div>
+            <div class="flex items-center space-x-4 border border-gray-300 p-4 rounded-lg shadow-md">
+                <img src="https://via.placeholder.com/150" alt="ヨガ" class="w-32 h-32 object-cover rounded-lg shadow-md">
+                <p class="text-left text-gray-700">説明: これは説明2の内容です。ここに写真に関する詳細な説明を書きます。</p>
+            </div>
+            <div class="flex items-center space-x-4 border border-gray-300 p-4 rounded-lg shadow-md">
+                <img src="https://via.placeholder.com/150" alt="パーソナル" class="w-32 h-32 object-cover rounded-lg shadow-md">
+                <p class="text-left text-gray-700">説明: これは説明3の内容です。ここに写真に関する詳細な説明を書きます。</p>
+            </div>
         </div>
     </div>
 </body>
