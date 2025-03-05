@@ -96,28 +96,42 @@
     <script>
         // 健康状態トレンドグラフの描画
         const ctx = document.getElementById('healthTrendChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
-                datasets: [{
-                    label: '健康スコア',
-                    data: [50, 64, 78, 82, 85, 94],
-                    borderColor: 'rgb(34, 197, 94)',
-                    tension: 0.3
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        min: 50,
-                        max: 100
+        const healthHistory = {{ user.health_history|tojson|safe }};
+        
+        // データがない場合のメッセージ表示
+        if (healthHistory.length === 0) {
+            ctx.font = '16px Arial';
+            ctx.fillStyle = '#666';
+            ctx.textAlign = 'center';
+            ctx.fillText('健康データはまだありません。右上のメニューから健康状態チェックを行ってください。', 
+                        ctx.canvas.width / 2, ctx.canvas.height / 2);
+        } else {
+            const labels = healthHistory.map(item => item.date);
+            const data = healthHistory.map(item => item.score);
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '健康スコア',
+                        data: data,
+                        borderColor: 'rgb(34, 197, 94)',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 50,
+                            max: 100
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
 
         // 動的コンテンツの生成
         document.getElementById('exercisePlan').innerHTML = generateExercisePlan();

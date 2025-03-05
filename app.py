@@ -1,11 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 # ユーザー情報の仮データ
 users = {
-    "user1": {"password": "password1", "first_login": True},
+    "user1": {
+        "password": "password1",
+        "first_login": True,
+        "health_history": []  # 健康スコアの履歴を保存
+    },
     "user2": {"password": "password2", "first_login": True},
     "123": {"password": "123", "first_login": True},
     "456": {"password": "456", "first_login": True}
@@ -34,7 +39,11 @@ def register():
         username = request.form['username']
         password = request.form['password']
         if username not in users:
-            users[username] = {"password": password, "first_login": True}
+            users[username] = {
+                "password": password,
+                "first_login": True,
+                "health_history": []  # 新規ユーザーの健康履歴を初期化
+            }
             session['username'] = username
             return redirect(url_for('health_questions'))
         else:
@@ -44,20 +53,33 @@ def register():
 @app.route('/health_questions', methods=['GET', 'POST'])
 def health_questions():
     if request.method == 'POST':
+        username = session.get('username')
         score = 0
         answers = request.form
         for key, value in answers.items():
             score += int(value)
-            users[session['username']][key] = int(value)
-        users[session['username']]['first_login'] = False
+            users[username][key] = int(value)
+        
+        # 健康スコアを100点満点に換算して履歴に追加
+        health_score = int((score / 14) * 100)
+        current_date = datetime.now().strftime('%Y-%m')
+        
+        # 健康履歴に新しいデータを追加
+        if 'health_history' not in users[username]:
+            users[username]['health_history'] = []
+        users[username]['health_history'].append({
+            'date': current_date,
+            'score': health_score
+        })
+        
+        users[username]['first_login'] = False
+        
+        # 点数に応じてリダイレクト
         if score >= 11:
-            group = "健康"
             return redirect(url_for('healthy'))
         elif 7 <= score < 11:
-            group = "体調問題ない"
             return redirect(url_for('no_problem'))
         else:
-            group = "注意が必要"
             return redirect(url_for('attention_needed'))
     return render_template('health_questions.html')
 
@@ -106,29 +128,16 @@ def yoga():
 def personal_health():
     username = session.get('username', 'ゲスト')
     if username == 'ゲスト' or username not in users:
-        health_score = 75  # デフォルト値
+        health_score = 75
+        health_history = []
     else:
-        # 質問の回答から健康スコアを計算
-        total_score = 0
-        questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7']
-        answered_questions = 0
-        
-        for q in questions:
-            if q in users[username]:
-                total_score += users[username][q]
-                answered_questions += 1
-        
-        if answered_questions > 0:
-            # 質問の回答から100点満点のスコアに変換
-            # 各質問は0-2点で、質問は7つあるので最大14点
-            # (実際のスコア / 満点) * 100 で100点満点に換算
-            health_score = int((total_score / (answered_questions * 2)) * 100)
-        else:
-            health_score = 75  # 回答がない場合のデフォルト値
+        health_history = users[username].get('health_history', [])
+        health_score = health_history[-1]['score'] if health_history else 75
     
     user = {
         'username': username,
-        'health_score': health_score
+        'health_score': health_score,
+        'health_history': health_history
     }
     
     context = {
