@@ -31,7 +31,8 @@ def login():
         else:
             return redirect(url_for('top'))
     else:
-        return redirect(url_for('home'))
+        error = "ユーザー名またはパスワードが間違っています"
+        return render_template('login.html', error=error)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -47,7 +48,7 @@ def register():
             session['username'] = username
             return redirect(url_for('health_questions'))
         else:
-            return "ユーザー名は既に存在します"
+            return render_template('register.html', error="ユーザー名は既に存在します")
     return render_template('register.html')
 
 @app.route('/health_questions', methods=['GET', 'POST'])
