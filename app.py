@@ -182,6 +182,11 @@ def generate_lifestyle_advice(health_score):
 def food_analysis():
     return render_template('food_analysis.html')
 
+@app.route('/foodRecipe')
+def foodRecipe():
+    return render_template('foodRecipe.html')
+
+
 @app.route('/analyze_food', methods=['POST'])
 def analyze_food():
     if 'food_image' not in request.files:
