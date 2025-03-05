@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import datetime
+from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -15,6 +17,14 @@ users = {
     "123": {"password": "123", "first_login": True},
     "456": {"password": "456", "first_login": True}
 }
+
+UPLOAD_FOLDER = 'static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/')
 def home():
@@ -149,14 +159,45 @@ def personal_health():
     return render_template('personal_health.html', **context)
 
 def generate_lifestyle_advice(health_score):
-    if health_score >= 90:
+    if (health_score >= 90):
         return '現在の健康的な生活習慣を維持しましょう！'
-    elif health_score >= 75:
+    elif (health_score >= 75):
         return '概ね良好です。運動習慣をさらに増やすことをお勧めします。'
-    elif health_score >= 60:
+    elif (health_score >= 60):
         return '生活習慣の見直しで、より健康的な毎日を目指しましょう。'
     else:
         return '専門家に相談し、健康管理のアドバイスを受けることをお勧めします。'
+
+@app.route('/food_analysis')
+def food_analysis():
+    return render_template('food_analysis.html')
+
+@app.route('/analyze_food', methods=['POST'])
+def analyze_food():
+    if 'food_image' not in request.files:
+        return redirect(request.url)
+    
+    file = request.files['food_image']
+    if file.filename == '':
+        return redirect(request.url)
+    
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+        
+        # ここでAI分析を行う（実際のAI実装は別途必要）
+        # 仮の分析結果
+        analysis_result = {
+            'calories': 650,
+            'protein': 25,
+            'carbs': 80,
+            'fat': 22,
+            'advice': '全体的にバランスの良い食事ですが、野菜をもう少し増やすことをお勧めします。',
+            'image_filename': filename  # 保存した画像のファイル名を追加
+        }
+        
+        return render_template('food_analysis.html', analysis_result=analysis_result)
 
 @app.route('/logout')
 def logout():
