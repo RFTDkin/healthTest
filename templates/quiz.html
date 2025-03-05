@@ -57,37 +57,29 @@
     <div class="container mx-auto px-4 py-8">
         <div class="video-container rounded-xl shadow-2xl p-8 mb-8">
             <h1 class="text-3xl font-bold text-green-800 mb-6">健康クイズ</h1>
-            <nav class="flex flex-wrap justify-center space-x-4 mb-8">
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element1">問題1</button>
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element2">問題2</button>
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element3">問題3</button>
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element4">問題4</button>
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element5">問題5</button>
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element6">問題6</button>
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element7">問題7</button>
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element8">問題8</button>
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element9">問題9</button>
-                <button class="toggleButton bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:from-green-500 hover:to-green-700 transition duration-300 ease-in-out" data-target="element10">問題10</button>
-            </nav>
             <div class=text-center>
                 <div class="mb-6">
-                    <div id="element1" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
+                    <div id="element1" class="mt-4 p-4 bg-white rounded shadow-md">
                         <h3>問題1</h3>
                         <p>1日あたり、成人が必要とする水分量の目安はどれくらいでしょうか？</p>
+                        <br>
                         <label><input type="radio" name="q1" value="1">約1L</label>
                         <label><input type="radio" name="q1" value="2">約2L</label>
                         <label><input type="radio" name="q1" value="3">約4L</label>
+                        <br>
                         <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
                         <p class="answer mt-2 font-bold hidden">正解: 2L</p>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <div id="element2" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
+                    <div id="element2" class="mt-4 p-4 bg-white rounded shadow-md">
                         <h3>問題2</h3>
                         <p>健康のために週に何回の運動が推奨されているでしょうか？</p>
+                        <br>
                         <label><input type="radio" name="q2" value="1">0~1回</label>
                         <label><input type="radio" name="q2" value="2">2~3回</label>
                         <label><input type="radio" name="q2" value="3">4回以上</label>
+                        <br>
                         <!-- 答えを確認ボタン -->
                         <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
                         <!-- 正解表示エリア -->
@@ -95,59 +87,123 @@
                     </div>
                 </div>
                 <div class="mb-6">
-                    <div id="element3" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
+                    <div id="element3" class="mt-4 p-4 bg-white rounded shadow-md">
                         <h3>問題3</h3>
-                        <p>問題:成人に推奨される1日の野菜摂取量はどれくらいでしょうか？</p>
+                        <p>成人に推奨される1日の野菜摂取量はどれくらいでしょうか？</p>
+                        <br>
                         <label><input type="radio" name="q3" value="1">100g</label>
                         <label><input type="radio" name="q3" value="2">200g</label>
                         <label><input type="radio" name="q3" value="3">350g</label>
+                        <br>
                         <!-- 答えを確認ボタン -->
                         <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
                         <!-- 正解表示エリア -->
-                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: 350g</p>
+                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: </p>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <div id="element4" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
-                        問題4
-                        成人はどの程度のBMI（体格指数）が最も病気になりにくいとされていますか？
+                    <div id="element4" class="mt-4 p-4 bg-white rounded shadow-md">
+                        <h3>問題4</h3>
+                        <p>成人はどの程度のBMI（体格指数）が最も病気になりにくいとされていますか？</p>
+                        <br>
                         <label><input type="radio" name="q4" value="1">18</label>
                         <label><input type="radio" name="q4" value="2">20</label>
                         <label><input type="radio" name="q4" value="3">22</label>
+                        <br>
                         <!-- 答えを確認ボタン -->
                         <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
                         <!-- 正解表示エリア -->
-                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: BMI22が最も病気になりにくいとされています</p>
+                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: </p>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <div id="element5" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
-                        問題5
+                    <div id="element5" class="mt-4 p-4 bg-white rounded shadow-md">
+                        <h3>問題5</h3>
+                        <p>成人はどの程度のBMI（体格指数）が最も病気になりにくいとされていますか？</p>
+                        <br>
+                        <label><input type="radio" name="q4" value="1">18</label>
+                        <label><input type="radio" name="q4" value="2">20</label>
+                        <label><input type="radio" name="q4" value="3">22</label>
+                        <br>
+                        <!-- 答えを確認ボタン -->
+                        <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
+                        <!-- 正解表示エリア -->
+                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: </p>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <div id="element6" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
-                        問題6
+                    <div id="element6" class="mt-4 p-4 bg-white rounded shadow-md" >
+                        <h3>問題6</h3>
+                        <p>成人はどの程度のBMI（体格指数）が最も病気になりにくいとされていますか？</p>
+                        <br>
+                        <label><input type="radio" name="q4" value="1">18</label>
+                        <label><input type="radio" name="q4" value="2">20</label>
+                        <label><input type="radio" name="q4" value="3">22</label>
+                        <br>
+                        <!-- 答えを確認ボタン -->
+                        <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
+                        <!-- 正解表示エリア -->
+                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: </p>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <div id="element7" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
-                        問題7
+                    <div id="element7" class="mt-4 p-4 bg-white rounded shadow-md">
+                        <h3>問題7</h3>
+                        <p>成人はどの程度のBMI（体格指数）が最も病気になりにくいとされていますか？</p>
+                        <br>
+                        <label><input type="radio" name="q4" value="1">18</label>
+                        <label><input type="radio" name="q4" value="2">20</label>
+                        <label><input type="radio" name="q4" value="3">22</label>
+                        <br>
+                        <!-- 答えを確認ボタン -->
+                        <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
+                        <!-- 正解表示エリア -->
+                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: </p>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <div id="element8" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
-                        問題8
+                    <div id="element8" class="mt-4 p-4 bg-white rounded shadow-md">
+                        <h3>問題8</h3>
+                        <p>成人はどの程度のBMI（体格指数）が最も病気になりにくいとされていますか？</p>
+                        <br>
+                        <label><input type="radio" name="q4" value="1">18</label>
+                        <label><input type="radio" name="q4" value="2">20</label>
+                        <label><input type="radio" name="q4" value="3">22</label>
+                        <br>
+                        <!-- 答えを確認ボタン -->
+                        <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
+                        <!-- 正解表示エリア -->
+                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: </p>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <div id="element9" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
-                        問題9
+                    <div id="element9" class="mt-4 p-4 bg-white rounded shadow-md">
+                        <h3>問題9</h3>
+                        <p>成人はどの程度のBMI（体格指数）が最も病気になりにくいとされていますか？</p>
+                        <br>
+                        <label><input type="radio" name="q4" value="1">18</label>
+                        <label><input type="radio" name="q4" value="2">20</label>
+                        <label><input type="radio" name="q4" value="3">22</label>
+                        <br>
+                        <!-- 答えを確認ボタン -->
+                        <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
+                        <!-- 正解表示エリア -->
+                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: </p>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <div id="element10" class="mt-4 p-4 bg-white rounded shadow-md" style="display:none;">
-                        問題10
+                    <div id="element10" class="mt-4 p-4 bg-white rounded shadow-md">
+                        <h3>問題10</h3>
+                        <p>成人はどの程度のBMI（体格指数）が最も病気になりにくいとされていますか？</p>
+                        <br>
+                        <label><input type="radio" name="q4" value="1">18</label>
+                        <label><input type="radio" name="q4" value="2">20</label>
+                        <label><input type="radio" name="q4" value="3">22</label>
+                        <br>
+                        <!-- 答えを確認ボタン -->
+                        <button class="checkAnswer mt-4 px-4 py-2 bg-green-500 text-white rounded">答えを確認</button>
+                        <!-- 正解表示エリア -->
+                        <p class="answer mt-2 font-bold text-green-600 hidden">正解: </p>
                     </div>
                 </div>
             </div>
@@ -155,22 +211,7 @@
     </div>
     <script>
         // すべてのボタンを取得
-        const toggleButtons = document.querySelectorAll('.toggleButton');
-        const toggleElements = document.querySelectorAll('.toggleButton');
-        // ボタンごとにイベントリスナーを設定
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // data-target属性で対象要素を取得
-                const targetId = button.getAttribute('data-target');
-                const targetElement = document.getElementById(targetId);
-                // 要素の表示状態を切り替える
-                if (targetElement.style.display === 'none' || targetElement.style.display === '') {
-                    targetElement.style.display = 'block';
-                } else {
-                    targetElement.style.display = 'none';
-                }
-            });
-        });
+
         document.querySelectorAll(".checkAnswer").forEach((button) => {
         button.addEventListener("click", function () {
             const questionDiv = this.closest(".mb-6");
@@ -203,8 +244,12 @@
                 answerText.classList.remove("text-green-600", "text-red-600");
                 answerText.classList.add(selectedAnswer.value === correctAnswer ? "text-green-600" : "text-red-600");
             } else {
-                alert("答えを選んでください！");
+                // 選択されていない場合は警告メッセージを表示
+                answerText.textContent = "答えを選んでください！";
+                answerText.classList.add("text-red-600");
+                answerText.classList.remove("text-green-600");
             }
+            answerText.classList.remove("hidden");
         });
     });
 </script>
