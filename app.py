@@ -27,6 +27,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+memories = []
+
 @app.route('/')
 def home():
     return render_template('login.html')
@@ -259,6 +261,29 @@ def update_account():
         users[username]['password'] = new_password
     
     return redirect(url_for('account'))
+
+@app.route('/memories')
+def memories_page():
+    return render_template('memories.html', memories=memories)
+
+@app.route('/add_memory', methods=['POST'])
+def add_memory():
+    if 'photo' not in request.files:
+        return redirect(url_for('memories_page'))
+    
+    file = request.files['photo']
+    if file.filename == '':
+        return redirect(url_for('memories_page'))
+    
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+        
+        comment = request.form.get('comment')
+        memories.append({'photo': filename, 'comment': comment})
+    
+    return redirect(url_for('memories_page'))
 
 @app.route('/logout')
 def logout():
