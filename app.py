@@ -98,7 +98,7 @@ def health_questions():
 @app.route('/healthy')
 def healthy():
     messages = [
-        "今日も元気に過ごしましょう！",
+        "",
         "健康第一！",
         "バランスの取れた食事を心がけましょう。",
         "運動を続けて、健康を維持しましょう。",
@@ -110,11 +110,29 @@ def healthy():
 
 @app.route('/no_problem')
 def no_problem():
-    return render_template('result2.html', group="体調問題ない")
+    messages = [
+        "今日も元気に過ごしましょう！",
+        "健康第一！",
+        "バランスの取れた食事を心がけましょう。",
+        "運動を続けて、健康を維持しましょう。",
+        "リラックスする時間を大切に。",
+        "水分補給を忘れずに！"
+    ]
+    random_message = random.choice(messages)
+    return render_template('result2.html', group="体調問題ない", random_message=random_message)
 
 @app.route('/attention_needed')
 def attention_needed():
-    return render_template('result3.html', group="注意が必要")
+    messages = [
+        "今日も元気に過ごしましょう！",
+        "健康第一！",
+        "バランスの取れた食事を心がけましょう。",
+        "運動を続けて、健康を維持しましょう。",
+        "リラックスする時間を大切に。",
+        "水分補給を忘れずに！"
+    ]
+    random_message = random.choice(messages)
+    return render_template('result3.html', group="注意が必要", random_message=random_message)
 
 @app.route('/top')
 def top():
@@ -177,15 +195,7 @@ def generate_lifestyle_advice(health_score):
         return '現在の健康的な生活習慣を維持しましょう！'
     elif (health_score >= 75):
         return '概ね良好です。運動習慣をさらに増やすことをお勧めします。'
-    elif (health_score >= 60):
-        return '生活習慣の見直しで、より健康的な毎日を目指しましょう。'
-    else:
-        return '専門家に相談し、健康管理のアドバイスを受けることをお勧めします。'
-
-@app.route('/food_analysis')
-def food_analysis():
-    return render_template('food_analysis.html')
-
+    
 @app.route('/analyze_food', methods=['POST'])
 def analyze_food():
     if 'food_image' not in request.files:
