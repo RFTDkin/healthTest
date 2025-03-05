@@ -98,7 +98,7 @@ def health_questions():
 @app.route('/healthy')
 def healthy():
     messages = [
-        "今日も元気に過ごしましょう！",
+        "",
         "健康第一！",
         "バランスの取れた食事を心がけましょう。",
         "運動を続けて、健康を維持しましょう。",
@@ -110,11 +110,29 @@ def healthy():
 
 @app.route('/no_problem')
 def no_problem():
-    return render_template('result2.html', group="体調問題ない")
+    messages = [
+        "今日も元気に過ごしましょう！",
+        "健康第一！",
+        "バランスの取れた食事を心がけましょう。",
+        "運動を続けて、健康を維持しましょう。",
+        "リラックスする時間を大切に。",
+        "水分補給を忘れずに！"
+    ]
+    random_message = random.choice(messages)
+    return render_template('result2.html', group="体調問題ない", random_message=random_message)
 
 @app.route('/attention_needed')
 def attention_needed():
-    return render_template('result3.html', group="注意が必要")
+    messages = [
+        "今日も元気に過ごしましょう！",
+        "健康第一！",
+        "バランスの取れた食事を心がけましょう。",
+        "運動を続けて、健康を維持しましょう。",
+        "リラックスする時間を大切に。",
+        "水分補給を忘れずに！"
+    ]
+    random_message = random.choice(messages)
+    return render_template('result3.html', group="注意が必要", random_message=random_message)
 
 @app.route('/top')
 def top():
@@ -144,6 +162,10 @@ def top():
 @app.route('/yoga')
 def yoga():
     return render_template('yoga.html')
+
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html')
 
 @app.route('/personal_health')
 def personal_health():
