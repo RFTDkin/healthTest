@@ -127,6 +127,52 @@ def top():
 def yoga():
     return render_template('yoga.html')
 
+@app.route('/personal_health')
+def personal_health():
+    username = session.get('username', 'ゲスト')
+    if username == 'ゲスト' or username not in users:
+        health_score = 75  # デフォルト値
+    else:
+        # 質問の回答から健康スコアを計算
+        total_score = 0
+        questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7']
+        answered_questions = 0
+        
+        for q in questions:
+            if q in users[username]:
+                total_score += users[username][q]
+                answered_questions += 1
+        
+        if answered_questions > 0:
+            # 質問の回答から100点満点のスコアに変換
+            # 各質問は0-2点で、質問は7つあるので最大14点
+            # (実際のスコア / 満点) * 100 で100点満点に換算
+            health_score = int((total_score / (answered_questions * 2)) * 100)
+        else:
+            health_score = 75  # 回答がない場合のデフォルト値
+    
+    user = {
+        'username': username,
+        'health_score': health_score
+    }
+    
+    context = {
+        'user': user,
+        'lifestyle_advice': generate_lifestyle_advice(health_score)
+    }
+    
+    return render_template('personal_health.html', **context)
+
+def generate_lifestyle_advice(health_score):
+    if health_score >= 90:
+        return '現在の健康的な生活習慣を維持しましょう！'
+    elif health_score >= 75:
+        return '概ね良好です。運動習慣をさらに増やすことをお勧めします。'
+    elif health_score >= 60:
+        return '生活習慣の見直しで、より健康的な毎日を目指しましょう。'
+    else:
+        return '専門家に相談し、健康管理のアドバイスを受けることをお勧めします。'
+
 @app.route('/logout')
 def logout():
     session.clear()
