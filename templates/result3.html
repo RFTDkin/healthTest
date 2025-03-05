@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>注意が必要な人のページ</title>
     <style>
-        header, footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-        }
         body {
-            background-image: url('https://image.freepik.com/free-vector/gradient-background-in-green-shades_23-2148363157.jpg');
             background-color: rgba(255, 255, 255, 0.5); /* 透明度を設定 */
             background-blend-mode: lighten; /* 背景画像と背景色をブレンド */
             font-family: Arial, sans-serif;
@@ -25,7 +18,7 @@
             padding: 40px; /* パディングを大きくする */
             border: 1px solid #ccc;
             border-radius: 10px;
-            background-color: #F9F9F9;
+            background-color: #f9f9f9;
         }
         h1 {
             color: #333;
@@ -51,7 +44,6 @@
             margin-right: 0;
         }
         nav a {
-            background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -60,22 +52,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>健康管理アプリ</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/top">トップページへ</a>
-                </li>
-                <li>
-                    <a href="/register">新規登録</a>
-                </li>
-                <li>
-                    <a href="/logout">ログアウト</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    {% include 'header.html' %}
     <div class="container">
         <h1>注意が必要なようです</h1>
         <p>今日は体調が思わしくなく、少し調子が悪いようです。無理せず、まずは体を休めることが大切です。</p>
@@ -90,8 +67,6 @@
             </ul>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2025 無添加主義. All rights reserved.</p>
-    </footer>
+    {% include 'footer.html' %}
 </body>
 </html>
