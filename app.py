@@ -145,6 +145,10 @@ def top():
 def yoga():
     return render_template('yoga.html')
 
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html')
+
 @app.route('/personal_health')
 def personal_health():
     username = session.get('username', 'ゲスト')
