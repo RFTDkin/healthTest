@@ -14,31 +14,35 @@
     </script>
     <style>
       .dropdown2 {
-        display: none;
-        position: absolute;
-        top: 5.5rem; /* Just below the existing header */
-        right: 0rem;
+        position: fixed;  /* absoluteからfixedに変更 */
+        top: 7rem;       /* 5.5remから7remに変更 */
+        right: 2rem;
         background-color: #FFFFFF;
         flex-direction: column;
-        min-width: 10rem;
-        border-top: 2px solid #FFFFFF; /* Connects visually to the header */
-        z-index: 50; /* Ensures it appears above other elements */
+        min-width: 15rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+        display: flex;
+        /* 追加：ホバー効果とトランジション */
+        transition: transform 0.3s ease;
+        transform: translateY(0);
+      }
+      .dropdown2:hover {
+        transform: translateY(2px);
       }
       .dropdown2 a {
         padding: 1rem 2rem;
         text-decoration: none;
         color: #000000;
         white-space: nowrap;
+        transition: all 0.3s ease;
+        border-radius: 0.375rem;  /* 追加：角丸 */
       }
       .dropdown2 a:hover {
-        /* background-color: #444444; */
         background-color: #29C177;
+        color: white;
       }
-      /* Show dropdown when active2 class is added */
-      .dropdown2.active2 {
-        display: flex;
-      }
-      /* New styles for the 地中海式食生活 content (from the first code) */
       .content-container {
           display: flex;
           align-items: center;
@@ -51,7 +55,6 @@
       .text-content {
           flex: 1;
           text-align: left;
-          /* font-size: 18px; */
           font-size: 26px;
           line-height: 1.6;
           max-width: 100%;
@@ -71,50 +74,37 @@
 </head>
 <body>
     {% include 'header.html' %}
-    <!-- The first snippet’s header ends here -->
-    <!-- ▼▼▼ BEGIN ADDED CODE ▼▼▼ -->
-    <!-- We add a content area where the background/image changes will appear -->
-    <div id="contentArea" class="w-full flex items-center justify-start bg-white pt-4"
-    style="height: calc(100vh - 5.5rem); background-size: cover; background-position: center;">
-        <h1 id="placeholderText" class="text-black text-xl">
-            <!-- 初期表示のコンテンツ -->
-            <div class="content-container shadow-2xl rounded-xl">
-                <div class="text-content">
-                    <h1>黄金律</h1>
-                    <p>
-                        健康的な食生活を実現するための基本は、加工食品を徹底的に避けることです。これらの食品は、体に悪影響を及ぼす有害な化学物質を含んでいるだけでなく、脂質、炭水化物、タンパク質、香料が絶妙に調整され、依存性を引き起こすように作られています。その結果、加工食品の強い味に慣れてしまうと、自然な素材本来の豊かな風味が感じられず、健康的な食事が物足りなく思えてしまいます。
-                    </p>
+    
+    <div class="flex">
+        <!-- Main content area -->
+        <div id="contentArea" class="flex-1 pt-4 px-4">
+            <h1 id="placeholderText" class="text-black text-xl">
+                <!-- 初期表示のコンテンツ -->
+                <div class="content-container shadow-2xl rounded-xl">
+                    <div class="text-content">
+                        <h1>黄金律</h1>
+                        <p>
+                            健康的な食生活を実現するための基本は、加工食品を徹底的に避けることです。これらの食品は、体に悪影響を及ぼす有害な化学物質を含んでいるだけでなく、脂質、炭水化物、タンパク質、香料が絶妙に調整され、依存性を引き起こすように作られています。その結果、加工食品の強い味に慣れてしまうと、自然な素材本来の豊かな風味が感じられず、健康的な食事が物足りなく思えてしまいます。
+                        </p>
+                    </div>
+                    <div class="image-container">
+                        <img src="/static/img/processed.jpg" alt="ultraprocessed">
+                    </div>
                 </div>
-                <div class="image-container">
-                    <img src="/static/img/processed.jpg" alt="ultraprocessed">
-                </div>
-            </div>
-        </h1>
+            </h1>
+        </div>
+
+        <!-- Fixed position menu -->
+        <div id="dropdownMenu2" class="dropdown2">
+            <a id="shokujiA" class="hover:text-white cursor-pointer">地中海式食生活</a>
+            <a id="shokujiB" class="hover:text-white cursor-pointer">伝統的な日本食</a>
+            <a id="shokujiC" class="hover:text-white cursor-pointer">ビーガン食</a>
+            <a id="shokujiD" class="hover:text-white cursor-pointer">低炭水化物ダイエット</a>
+            <a id="shokujiSearch" class="hover:text-white cursor-pointer">レシピ検索</a>
+        </div>
     </div>
-    <!-- Dropdown for 食事療法 (mimicking the second snippet's menu) -->
-    <div id="dropdownMenu2" class="dropdown2 rounded-b-md">
-      <a id="shokujiA">地中海式食生活</a>
-      <a id="shokujiB">伝統的な日本食</a>
-      <a id="shokujiC">ビーガン食</a>
-      <a id="shokujiD">低炭水化物ダイエット</a>
-      <a id="shokujiSearch">検索</a>
-    </div>
+
     <script>
-      // 1) Find the "食事療法" link in the original nav (without altering it):
-      const navLinks = document.querySelectorAll('nav a');
-      let shokujiLink = null;
-      navLinks.forEach(link => {
-        if (link.textContent === '食事療法') {
-          shokujiLink = link;
-        }
-      });
-      // 2) Toggle the new dropdown2 when "食事療法" is clicked
-      if (shokujiLink) {
-        shokujiLink.addEventListener('click', (e) => {
-          e.preventDefault(); // prevent any default action
-          document.getElementById('dropdownMenu2').classList.toggle('active2');
-        });
-      }
       // Grab elements for each new dropdown link
       const linkA2 = document.getElementById('shokujiA');
       const linkB2 = document.getElementById('shokujiB');
@@ -196,6 +186,5 @@
         placeholderText2.innerText = "検索ボタンがクリックされました（仮）";
       });
     </script>
-    <!-- ▲▲▲ END ADDED CODE ▲▲▲ -->
 </body>
 </html>
