@@ -117,11 +117,12 @@ def healthy():
 def no_problem():
     messages = [
         "座っりっぱなしは危険！！30分に１回は立とう！",
-        "健康第一！",
-        "ようかい体操第一！",
-        "右手がうずく",
-        "無音の部屋だと熟睡できる？",
-        "水分補給を忘れずに！"
+        "パソコンは20分に１回、目を休めるといいらしい！",
+        "エンジニアには運動が大事！",
+        "右手がうずくと、心臓に異常があるかも！？",
+        "Pythonって名前、かっこよくないですか！？",
+        "ITエンジニアに向いている人の性格や特徴は\
+            \n「協調性が高いチームワークを大切にする」「忍耐力が高い・粘り強い」「冷静・計画的」など"
     ]
     random_message = random.choice(messages)
     return render_template('result2.html', group="体調問題ない", random_message=random_message)
