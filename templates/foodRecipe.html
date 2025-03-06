@@ -14,8 +14,8 @@
     </script>
     <style>
       .dropdown2 {
-        position: fixed;  /* absoluteからfixedに変更 */
-        top: 7rem;       /* 5.5remから7remに変更 */
+        position: fixed;
+        top: 7rem;
         right: 2rem;
         background-color: #FFFFFF;
         flex-direction: column;
@@ -24,7 +24,6 @@
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         z-index: 50;
         display: flex;
-        /* 追加：ホバー効果とトランジション */
         transition: transform 0.3s ease;
         transform: translateY(0);
       }
@@ -37,7 +36,7 @@
         color: #000000;
         white-space: nowrap;
         transition: all 0.3s ease;
-        border-radius: 0.375rem;  /* 追加：角丸 */
+        border-radius: 0.375rem;
       }
       .dropdown2 a:hover {
         background-color: #29C177;
@@ -77,7 +76,7 @@
     
     <div class="flex">
         <!-- Main content area -->
-        <div id="contentArea" class="flex-1 pt-4 px-4">
+        <div id="contentArea" class="flex-1 pt-4 px-4" style="min-height: calc(100vh - 7rem); background: rgb(241,253,248) url('m_placeholder') center center / cover no-repeat;">
             <h1 id="placeholderText" class="text-black text-xl">
                 <!-- 初期表示のコンテンツ -->
                 <div class="content-container shadow-2xl rounded-xl">
@@ -100,12 +99,22 @@
             <a id="shokujiB" class="hover:text-white cursor-pointer">伝統的な日本食</a>
             <a id="shokujiC" class="hover:text-white cursor-pointer">ビーガン食</a>
             <a id="shokujiD" class="hover:text-white cursor-pointer">低炭水化物ダイエット</a>
-            <a id="shokujiSearch" class="hover:text-white cursor-pointer">レシピ検索</a>
+            <!-- Inline SVG magnifying glass with “さがす” -->
+            <a id="shokujiSearch" class="hover:text-white cursor-pointer flex items-center gap-[12px]" aria-label="さがす">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                     viewBox="0 0 24 24" class="mise-icon mise-icon-search-unselected">
+                  <path stroke="currentColor" stroke-width="1.5" d="M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"></path>
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5" d="m15 15 5 5"></path>
+                </svg>
+              </div>
+              <div class="sidebar-inactive:hidden text-[19px]">さがす</div>
+            </a>
         </div>
     </div>
 
     <script>
-      // Grab elements for each new dropdown link
       const linkA2 = document.getElementById('shokujiA');
       const linkB2 = document.getElementById('shokujiB');
       const linkC2 = document.getElementById('shokujiC');
@@ -113,11 +122,24 @@
       const linkSearch2 = document.getElementById('shokujiSearch');
       const content2 = document.getElementById('contentArea');
       const placeholderText2 = document.getElementById('placeholderText');
-      // Clicking A (地中海式食生活) with the adapted content
+      
+      let currentDiet = null;
+
+      function highlightLink(link) {
+        [linkA2, linkB2, linkC2, linkD2, linkSearch2].forEach(el => {
+          el.style.backgroundColor = '';
+          el.style.color = '';
+        });
+        link.style.backgroundColor = '#29C177';
+        link.style.color = 'white';
+      }
+
       linkA2.addEventListener('click', () => {
+        highlightLink(linkA2);
+        currentDiet = '地中海';
         content2.style.background = "rgb(241,253,248) url('a_placeholder') center center / cover no-repeat";
         placeholderText2.innerHTML = `
-    <div class="content-container">
+    <div class="content-container shadow-2xl rounded-xl">
         <div class="text-content">
             <h1>地中海式食生活</h1>
             <p>
@@ -130,11 +152,13 @@
     </div>
 `;
       });
-      // Clicking B (伝統的な日本食)
+
       linkB2.addEventListener('click', () => {
+        highlightLink(linkB2);
+        currentDiet = '日本食';
         content2.style.background = "rgb(241,253,248) url('b_placeholder') center center / cover no-repeat";
         placeholderText2.innerHTML = `
-    <div class="content-container">
+    <div class="content-container shadow-2xl rounded-xl">
         <div class="text-content">
             <h1>伝統的な日本食</h1>
             <p>
@@ -147,11 +171,13 @@
     </div>
 `;
       });
-      // Clicking C (ビーガン食)
+
       linkC2.addEventListener('click', () => {
+        highlightLink(linkC2);
+        currentDiet = 'ビーガン';
         content2.style.background = "rgb(241,253,248) url('c_placeholder') center center / cover no-repeat";
         placeholderText2.innerHTML = `
-    <div class="content-container">
+    <div class="content-container shadow-2xl rounded-xl">
         <div class="text-content">
             <h1>ビーガン食</h1>
             <p>
@@ -164,11 +190,13 @@
     </div>
 `;
       });
-      // Clicking D (低炭水化物ダイエット)
+
       linkD2.addEventListener('click', () => {
+        highlightLink(linkD2);
+        currentDiet = '低炭水化物';
         content2.style.background = "rgb(241,253,248) url('d_placeholder') center center / cover no-repeat";
         placeholderText2.innerHTML = `
-    <div class="content-container">
+    <div class="content-container shadow-2xl rounded-xl">
         <div class="text-content">
             <h1>低炭水化物ダイエット</h1>
             <p>
@@ -181,9 +209,10 @@
     </div>
 `;
       });
-      // Clicking 検索
+
       linkSearch2.addEventListener('click', () => {
-        placeholderText2.innerText = "検索ボタンがクリックされました（仮）";
+        highlightLink(linkSearch2);
+        // (Any code for your mini window or note can go here if needed)
       });
     </script>
 </body>
